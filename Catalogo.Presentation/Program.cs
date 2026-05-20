@@ -4,27 +4,29 @@ using CatalogoApp.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddControllersWithViews();
 
-// Ruta del JSON
-var jsonPath = Path.Combine(
-    builder.Environment.ContentRootPath,
-    "data",
-    "items.json"
-);
+// Ruta base de los JSON
+var dataPath = Path.Combine(builder.Environment.ContentRootPath, "data");
 
-// Registrar repositorio
+// Repositorios
 builder.Services.AddSingleton<IItemRepository>(
-    new JsonItemRepository(jsonPath)
+    new JsonItemRepository(Path.Combine(dataPath, "items.json"))
+);
+builder.Services.AddSingleton<IUserRepository>(
+    new JsonUserRepository(Path.Combine(dataPath, "users.json"))
+);
+builder.Services.AddSingleton<IReviewRepository>(
+    new JsonReviewRepository(Path.Combine(dataPath, "reviews.json"))
 );
 
-// Registrar servicio
+// Servicios
 builder.Services.AddScoped<ItemService>();
+builder.Services.AddScoped<UsuarioService>();
+builder.Services.AddScoped<ReviewService>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
