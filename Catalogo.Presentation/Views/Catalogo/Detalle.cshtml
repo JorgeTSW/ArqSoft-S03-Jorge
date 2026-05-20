@@ -57,7 +57,7 @@ else
 {
     <h4>Agregar tu review</h4>
     <form asp-controller="Review" asp-action="Agregar" method="post">
-        <input type="hidden" name="VideojuegoId" value="@Model.Id" />
+        <input type="hidden" name="ItemId" value="@Model.Id" />
         <div>
             <label>Rating</label>
             <select name="Rating">

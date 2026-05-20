@@ -4,7 +4,31 @@
     "ItemId": 1,
     "UserId": 1,
     "NombreUser": "Jorge Pedrozo",
-    "Comentario": "Un clásico imprescindible",
+    "Comentario": "Un cl\u00E1sico imprescindible",
+    "Rating": 5
+  },
+  {
+    "Id": 2,
+    "ItemId": 1,
+    "UserId": 1,
+    "NombreUser": "Jorge Pedrozo",
+    "Comentario": "El mejor juego!",
+    "Rating": 5
+  },
+  {
+    "Id": 3,
+    "ItemId": 1,
+    "UserId": 1,
+    "NombreUser": "Jorge Pedrozo",
+    "Comentario": null,
+    "Rating": 5
+  },
+  {
+    "Id": 4,
+    "ItemId": 2,
+    "UserId": 1,
+    "NombreUser": "Jorge Pedrozo",
+    "Comentario": "Muy buen juego",
     "Rating": 5
   }
 ]

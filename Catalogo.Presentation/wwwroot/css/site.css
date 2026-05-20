@@ -1,31 +1,255 @@
+/* ============================================
+   VARIABLES — Edita aquí para cambiar el tema
+   ============================================ */
+:root {
+    /* Colores base */
+    --color-bg: #0a0a0f;
+    --color-bg-card: #1a1a2e;
+    --color-bg-nav: #0d0d1a;
+    --color-texto: #e0e0e0;
+    --color-texto-suave: #888;
+    /* Neon */
+    --neon-cian: #00ffff;
+    --neon-magenta: #ff00ff;
+    --neon-purpura: #7b2fff;
+    /* Color principal de la app (cambia esto para cambiar todo) */
+    --neon-principal: var(--neon-magenta);
+    --neon-secundario: #ff44ff; /* magenta más claro */
+    /* Tipografías */
+    --fuente-titulo: 'Press Start 2P', cursive;
+    --fuente-ui: 'Audiowide', sans-serif;
+    --fuente-cuerpo: 'Exo 2', sans-serif;
+    /* Glow */
+    --glow-principal: 0 0 7px var(--neon-principal), 0 0 20px var(--neon-principal), 0 0 40px var(--neon-principal);
+    --glow-suave: 0 0 5px var(--neon-principal), 0 0 10px var(--neon-principal);
+    --glow-borde: 0 0 8px var(--neon-principal), inset 0 0 8px rgba(0, 255, 255, 0.05);
+    /* Bordes */
+    --borde-neon: 1px solid var(--neon-principal);
+    --radio: 6px;
+}
+
+/* ============================================
+   FUENTES (Google Fonts)
+   ============================================ */
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Press+Start+2P&family=Exo+2:wght@300;400;600&display=swap');
+/* ============================================
+   BASE
+   ============================================ */
 html {
-  font-size: 14px;
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
+    html {
+        font-size: 16px;
+    }
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-color: var(--color-bg);
+    color: var(--color-texto);
+    font-family: var(--fuente-cuerpo);
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+h1, h2, h3 {
+    font-family: var(--fuente-ui);
+    color: var(--neon-principal);
+    text-shadow: var(--glow-suave);
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+a {
+    color: var(--neon-principal);
+    text-decoration: none;
+}
+
+    a:hover {
+        color: var(--neon-secundario);
+        text-shadow: var(--glow-suave);
+    }
+
+hr {
+    border-color: var(--neon-principal);
+    opacity: 0.3;
+}
+
+/* ============================================
+   NAVBAR
+   ============================================ */
+.navbar {
+    background-color: var(--color-bg-nav) !important;
+    border-bottom: var(--borde-neon) !important;
+    box-shadow: var(--glow-suave);
+    font-family: var(--fuente-ui);
+}
+
+.navbar-brand {
+    color: var(--neon-principal) !important;
+    text-shadow: var(--glow-principal);
+    font-family: var(--fuente-titulo);
+    font-size: 1rem;
+    letter-spacing: 2px;
+}
+
+.nav-link {
+    color: var(--color-texto) !important;
+    transition: color 0.2s, text-shadow 0.2s;
+}
+
+    .nav-link:hover {
+        color: var(--neon-principal) !important;
+        text-shadow: var(--glow-suave);
+    }
+
+/* ============================================
+   BOTONES
+   ============================================ */
+.btn-primary {
+    background-color: transparent;
+    color: var(--neon-principal);
+    border: var(--borde-neon);
+    box-shadow: var(--glow-suave);
+    font-family: var(--fuente-ui);
+    font-size: 0.8rem;
+    transition: all 0.2s;
+}
+
+    .btn-primary:hover {
+        background-color: var(--neon-principal);
+        color: var(--color-bg);
+        box-shadow: var(--glow-principal);
+    }
+
+.btn-outline-primary {
+    color: var(--neon-principal);
+    border-color: var(--neon-principal);
+    font-family: var(--fuente-ui);
+    font-size: 0.8rem;
+    transition: all 0.2s;
+}
+
+    .btn-outline-primary:hover {
+        background-color: var(--neon-principal);
+        color: var(--color-bg);
+        box-shadow: var(--glow-suave);
+    }
+
+.btn-outline-secondary {
+    color: var(--neon-secundario);
+    border-color: var(--neon-secundario);
+    font-family: var(--fuente-ui);
+    font-size: 0.8rem;
+    transition: all 0.2s;
+}
+
+    .btn-outline-secondary:hover {
+        background-color: var(--neon-secundario);
+        color: var(--color-bg);
+    }
+
+/* ============================================
+   CARDS / ITEMS
+   ============================================ */
+.card {
+    background-color: var(--color-bg-card);
+    border: var(--borde-neon);
+    box-shadow: var(--glow-borde);
+    border-radius: var(--radio);
+    color: var(--color-texto);
+    transition: box-shadow 0.3s;
+}
+
+    .card:hover {
+        box-shadow: var(--glow-principal);
+    }
+
+/* ============================================
+   FORMULARIOS
+   ============================================ */
+.form-control {
+    background-color: var(--color-bg-card);
+    border: var(--borde-neon);
+    color: var(--color-texto);
+    font-family: var(--fuente-cuerpo);
+    border-radius: var(--radio);
+}
+
+    .form-control:focus {
+        background-color: var(--color-bg-card);
+        border-color: var(--neon-secundario);
+        color: var(--color-texto);
+        box-shadow: 0 0 0 0.1rem var(--color-bg), 0 0 0 0.25rem var(--neon-principal);
+    }
+
+    .form-control::placeholder {
+        color: var(--color-texto-suave);
+    }
+
+label {
+    font-family: var(--fuente-ui);
+    font-size: 0.8rem;
+    color: var(--neon-principal);
+    margin-bottom: 4px;
+}
+
+select.form-control, select {
+    background-color: var(--color-bg-card);
+    color: var(--color-texto);
+    border: var(--borde-neon);
+}
+
+textarea {
+    background-color: var(--color-bg-card) !important;
+    color: var(--color-texto) !important;
+    border: var(--borde-neon) !important;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+    background-color: var(--color-bg-nav);
+    border-top: var(--borde-neon) !important;
+    font-family: var(--fuente-ui);
+    font-size: 0.75rem;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+    /* Glow especial para links del footer */
+.footer a {
+    color: #00aaff;
+    text-shadow: 0 0 3px rgba(0, 170, 255, 0.4);
+}
+
+.footer a:hover {
+    color: #44ccff;
+    text-shadow: 0 0 7px #44ccff, 0 0 20px #44ccff;
+}
+
+.footer p, .footer .text-muted {
+    color: #aaa !important;
+}
+
+/* ============================================
+   UTILIDADES NEON (úsalas en las vistas)
+   ============================================ */
+.neon-text {
+    color: var(--neon-principal);
+    text-shadow: var(--glow-principal);
+}
+
+.neon-text-secondary {
+    color: var(--neon-secundario);
+    text-shadow: 0 0 7px var(--neon-secundario), 0 0 20px var(--neon-secundario);
+}
+
+.neon-border {
+    border: var(--borde-neon);
+    box-shadow: var(--glow-borde);
+    border-radius: var(--radio);
+    padding: 1rem;
 }
