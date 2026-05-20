@@ -18,5 +18,11 @@ public class ReviewService
     public double ObtenerPromedio(int videojuegoId) =>
         _repo.PromedioRating(videojuegoId);
 
-    public void AgregarReview(Review review) => _repo.Agregar(review);
+    public void AgregarReview(Review review)
+    {
+        if (review.Rating < 1 || review.Rating > 5)
+            throw new ArgumentException("El rating debe estar entre 1 y 5.");
+
+        _repo.Agregar(review);
+    }
 }
