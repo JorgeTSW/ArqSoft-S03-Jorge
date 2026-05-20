@@ -1,7 +1,24 @@
+using CatalogoApp.Application.Services;
+using CatalogoApp.Domain.Interfaces;
+using CatalogoApp.Infrastructure.Repositories;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// Ruta del archivo JSON — se guarda en la carpeta "data" del proyecto
+var jsonPath = Path.Combine(
+    builder.Environment.ContentRootPath, "data", "items.json"
+);
+
+// Registrar el repositorio JSON como implementación de IItemRepository
+builder.Services.AddSingleton<IItemRepository>(
+    new JsonItemRepository(jsonPath)
+);
+
+// Registrar el servicio de Application
+builder.Services.AddScoped<ItemService>();
 
 var app = builder.Build();
 

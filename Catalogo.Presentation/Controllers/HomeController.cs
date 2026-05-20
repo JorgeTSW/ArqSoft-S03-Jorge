@@ -1,4 +1,5 @@
-using Catalogo.Presentation.Models;
+using CatalogoApp.Application.Services;
+using CatalogoApp.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
