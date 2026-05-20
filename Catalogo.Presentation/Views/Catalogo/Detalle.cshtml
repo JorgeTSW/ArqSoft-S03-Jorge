@@ -4,8 +4,8 @@
 @{
     var reviews = ViewBag.Reviews as IEnumerable<Review> ?? Enumerable.Empty<Review>();
     var promedio = (double)(ViewBag.Promedio ?? 0.0);
-    var usuarioId = Context.Session.GetInt32("UserId");
-    var usuarioNombre = Context.Session.GetString("UserNombre");
+    var userId = Context.Session.GetInt32("UserId");
+    var userNombre = Context.Session.GetString("UserNombre");
 }
 
 <h1>@Model.Titulo</h1>
@@ -53,7 +53,7 @@ else
 
 <hr />
 
-@if (usuarioId != null)
+@if (userId != null)
 {
     <h4>Agregar tu review</h4>
     <form asp-controller="Review" asp-action="Agregar" method="post">
@@ -78,10 +78,10 @@ else
 }
 <div class="d-flex align-items-center gap-3">
     <a asp-action="Index">&larr; Volver al Catálogo</a>
-    @if (usuarioId == null)
+    @if (userId == null)
     {
         <span>|</span>
-        <a asp-controller="Usuario" asp-action="Login">Inicia sesión</a>
+        <a asp-controller="User" asp-action="Login">Inicia sesión</a>
         <span>para dejar una review.</span>
     }
 </div>

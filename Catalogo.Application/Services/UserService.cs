@@ -14,10 +14,10 @@ public class UserService
 
     public User? Login(string email, string password)
     {
-        var usuario = _repo.ObtenerPorEmail(email);
-        if (usuario == null || usuario.Password != password)
+        var user = _repo.ObtenerPorEmail(email);
+        if (user == null || user.Password != password)
             return null;
-        return usuario;
+        return user;
     }
 
     public bool Registrar(User user)
