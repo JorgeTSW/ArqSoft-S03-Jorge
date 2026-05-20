@@ -6,6 +6,15 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 
+// Session
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
+
 // Ruta base de los JSON
 var dataPath = Path.Combine(builder.Environment.ContentRootPath, "data");
 
@@ -22,7 +31,7 @@ builder.Services.AddSingleton<IReviewRepository>(
 
 // Servicios
 builder.Services.AddScoped<ItemService>();
-builder.Services.AddScoped<UsuarioService>();
+builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<ReviewService>();
 
 var app = builder.Build();
@@ -35,6 +44,8 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseRouting();
+
+app.UseSession(); // ← línea agregada
 
 app.UseAuthorization();
 

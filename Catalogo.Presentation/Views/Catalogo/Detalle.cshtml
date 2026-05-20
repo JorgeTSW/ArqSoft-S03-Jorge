@@ -1,4 +1,12 @@
 ﻿@model CatalogoApp.Domain.Models.Item
+@using CatalogoApp.Domain.Models
+
+@{
+    var reviews = ViewBag.Reviews as IEnumerable<Review> ?? Enumerable.Empty<Review>();
+    var promedio = (double)(ViewBag.Promedio ?? 0.0);
+    var usuarioId = Context.Session.GetInt32("UserId");
+    var usuarioNombre = Context.Session.GetString("UserNombre");
+}
 
 <h1>@Model.Titulo</h1>
 
@@ -8,4 +16,72 @@
 <p><strong>Descripción:</strong> @Model.Descripcion</p>
 
 <hr />
-<a asp-action="Index">&larr; Volver al catálogo</a>
+
+<p>
+    <strong>Rating promedio</strong>:
+    @for (int i = 1; i <= 5; i++)
+    {
+        <span style="color: @(i <= promedio ? "gold" : "lightgray"); font-size: 1.5rem;">★</span>
+    }
+    <small> (@promedio.ToString("0.0") / 5)</small>
+</p>
+
+<hr />
+
+<h3>Reviews</h3>
+
+@if (!reviews.Any())
+{
+    <p>Aún no hay reviews. ¡Sé el primero!</p>
+}
+else
+{
+    @foreach (var review in reviews)
+    {
+        <div style="border: 1px solid #ddd; padding: 10px; margin-bottom: 10px; border-radius: 6px;">
+            <strong>@review.NombreUser</strong>
+            <span style="margin-left: 8px;">
+                @for (int i = 1; i <= 5; i++)
+                {
+                    <span style="color: @(i <= review.Rating ? "gold" : "lightgray");">★</span>
+                }
+            </span>
+            <p>@review.Comentario</p>
+        </div>
+    }
+}
+
+<hr />
+
+@if (usuarioId != null)
+{
+    <h4>Agregar tu review</h4>
+    <form asp-controller="Review" asp-action="Agregar" method="post">
+        <input type="hidden" name="VideojuegoId" value="@Model.Id" />
+        <div>
+            <label>Rating</label>
+            <select name="Rating">
+                <option value="1">★ 1</option>
+                <option value="2">★★ 2</option>
+                <option value="3">★★★ 3</option>
+                <option value="4">★★★★ 4</option>
+                <option value="5" selected>★★★★★ 5</option>
+            </select>
+        </div>
+        <div>
+            <label>Comentario</label>
+            <textarea name="Comentario" rows="3" style="width:100%"></textarea>
+        </div>
+        <br />
+        <button type="submit">Publicar review</button>
+    </form>
+}
+<div class="d-flex align-items-center gap-3">
+    <a asp-action="Index">&larr; Volver al Catálogo</a>
+    @if (usuarioId == null)
+    {
+        <span>|</span>
+        <a asp-controller="Usuario" asp-action="Login">Inicia sesión</a>
+        <span>para dejar una review.</span>
+    }
+</div>
