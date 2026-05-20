@@ -3,11 +3,11 @@ using CatalogoApp.Domain.Interfaces;
 
 namespace CatalogoApp.Application.Services;
 
-public class UsuarioService
+public class UserService
 {
     private readonly IUserRepository _repo;
 
-    public UsuarioService(IUserRepository repo)
+    public UserService(IUserRepository repo)
     {
         _repo = repo;
     }
