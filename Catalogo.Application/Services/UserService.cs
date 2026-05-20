@@ -1,7 +1,7 @@
-﻿using Catalogo.Domain.Models;
-using Catalogo.Domain.Interfaces;
+﻿using CatalogoApp.Domain.Models;
+using CatalogoApp.Domain.Interfaces;
 
-namespace Catalogo.Application.Services;
+namespace CatalogoApp.Application.Services;
 
 public class UsuarioService
 {

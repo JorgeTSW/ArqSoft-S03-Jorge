@@ -1,6 +1,6 @@
-﻿using Catalogo.Domain.Models;
+﻿using CatalogoApp.Domain.Models;
 
-namespace Catalogo.Domain.Interfaces;
+namespace CatalogoApp.Domain.Interfaces;
 
 public interface IReviewRepository
 {

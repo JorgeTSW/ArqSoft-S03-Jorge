@@ -1,4 +1,4 @@
-﻿namespace Catalogo.Domain.Models;
+﻿namespace CatalogoApp.Domain.Models;
 
 public class User
 {

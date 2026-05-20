@@ -1,7 +1,7 @@
-﻿using Catalogo.Domain.Interfaces;
-using Catalogo.Domain.Models;
+﻿using CatalogoApp.Domain.Interfaces;
+using CatalogoApp.Domain.Models;
 
-namespace Catalogo.Application.Services;
+namespace CatalogoApp.Application.Services;
 
 public class ReviewService
 {
