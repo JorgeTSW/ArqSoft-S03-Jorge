@@ -3,29 +3,48 @@
     ViewData["Title"] = "Registro";
 }
 
-<h2>Crear cuenta</h2>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; max-width: 900px; margin: 3rem auto;">
 
-@if (ViewBag.Error != null)
-{
-    <p style="color:red">@ViewBag.Error</p>
-}
+    <!-- COLUMNA IZQUIERDA — Formulario -->
+    <div>
+        <h1>Crear cuenta</h1>
+        <p style="color: var(--color-texto-suave); margin-bottom: 2rem;">
+            Completa el formulario para unirte al catálogo.
+        </p>
 
-<form asp-action="Register" method="post">
-    <div>
-        <label>Nombre</label>
-        <input asp-for="Nombre" required />
-    </div>
-    <div>
-        <label>Email</label>
-        <input asp-for="Email" type="email" required />
-    </div>
-    <div>
-        <label>Contraseña</label>
-        <input asp-for="Password" type="password" required />
-    </div>
-    <br />
-    <button type="submit">Registrarse</button>
-</form>
+        @if (ViewBag.Error != null)
+        {
+            <p style="color: var(--neon-secundario);">
+                <i class="fa-solid fa-triangle-exclamation"></i> @ViewBag.Error
+            </p>
+        }
 
-<hr />
-<a asp-action="Login">¿Ya tienes cuenta? Inicia sesión</a>
+        <form asp-action="Register" method="post">
+            <div style="margin-bottom: 1rem;">
+                <input class="form-control" asp-for="Nombre" placeholder="Nombre" required />
+            </div>
+            <div style="margin-bottom: 1rem;">
+                <input class="form-control" asp-for="Email" type="email" placeholder="Email" required />
+            </div>
+            <div style="margin-bottom: 1.5rem;">
+                <input class="form-control" asp-for="Password" type="password" placeholder="Contraseña" required />
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.75rem; font-size: 1rem;">
+                <i class="fa-solid fa-user-plus"></i> REGISTRARSE
+            </button>
+        </form>
+    </div>
+
+    <!-- COLUMNA DERECHA — Login -->
+    <div style="display: flex; flex-direction: column; justify-content: center;">
+        <h2>¿Ya tienes cuenta?</h2>
+        <p style="color: var(--color-texto); margin-bottom: 1.5rem;">
+            Si ya estás registrado, inicia sesión para acceder a tu cuenta
+            y seguir dejando reseñas.
+        </p>
+        <a asp-action="Login" class="btn btn-outline-primary" style="width: fit-content; padding: 0.6rem 2rem;">
+            <i class="fa-solid fa-right-to-bracket"></i> Iniciar sesión
+        </a>
+    </div>
+
+</div>

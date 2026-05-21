@@ -2,25 +2,45 @@
     ViewData["Title"] = "Iniciar sesión";
 }
 
-<h2>Iniciar sesión</h2>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; max-width: 900px; margin: 3rem auto;">
 
-@if (ViewBag.Error != null)
-{
-    <p style="color:red">@ViewBag.Error</p>
-}
-
-<form asp-action="Login" method="post">
+    <!-- COLUMNA IZQUIERDA — Formulario -->
     <div>
-        <label>Email</label>
-        <input type="email" name="email" required />
-    </div>
-    <div>
-        <label>Contraseña</label>
-        <input type="password" name="password" required />
-    </div>
-    <br />
-    <button type="submit">Entrar</button>
-</form>
+        <h1>Iniciar sesión</h1>
+        <p style="color: var(--color-texto-suave); margin-bottom: 2rem;">
+            Accede a tu cuenta para dejar reseñas.
+        </p>
 
-<hr />
-<a asp-action="Register">¿No tienes cuenta? Regístrate</a>
+        @if (ViewBag.Error != null)
+        {
+            <p style="color: var(--neon-secundario);">
+                <i class="fa-solid fa-triangle-exclamation"></i> @ViewBag.Error
+            </p>
+        }
+
+        <form asp-action="Login" method="post">
+            <div style="margin-bottom: 1rem;">
+                <input class="form-control" type="email" name="email" placeholder="Email" required />
+            </div>
+            <div style="margin-bottom: 1.5rem;">
+                <input class="form-control" type="password" name="password" placeholder="Contraseña" required />
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.75rem; font-size: 1rem;">
+                <i class="fa-solid fa-right-to-bracket"></i> ENTRAR
+            </button>
+        </form>
+    </div>
+
+    <!-- COLUMNA DERECHA — Registro -->
+    <div style="display: flex; flex-direction: column; justify-content: center;">
+        <h2>¿Primera vez aquí?</h2>
+        <p style="color: var(--color-texto); margin-bottom: 1.5rem;">
+            Crea tu cuenta y empieza a calificar tus videojuegos favoritos.
+            El registro es gratuito y solo toma un momento.
+        </p>
+        <a asp-action="Register" class="btn btn-outline-primary" style="width: fit-content; padding: 0.6rem 2rem;">
+            <i class="fa-solid fa-user-plus"></i> Crear cuenta
+        </a>
+    </div>
+
+</div>
